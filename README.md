@@ -58,6 +58,7 @@ SITE_URL=http://localhost:3000
 ```
 
 > **Getting Gmail App Password:**
+>
 > 1. Go to your Google Account → Security
 > 2. Enable 2-Step Verification (if not already)
 > 3. Go to Security → App passwords
@@ -86,6 +87,7 @@ The newsletter cron job runs automatically on the **1st of every month at 9:00 A
 ### Manually trigger newsletter (for testing)
 
 Edit `server.js` and temporarily change the cron schedule to run in a few seconds:
+
 ```js
 cron.schedule('*/1 * * * *', async () => { ... }); // every minute for testing
 ```
@@ -95,12 +97,14 @@ cron.schedule('*/1 * * * *', async () => { ... }); // every minute for testing
 ## 🌐 Deploying to Railway / Render (Free)
 
 ### Option A: Railway
+
 1. Push to GitHub
 2. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
 3. Add environment variables in Railway dashboard
 4. Done — your app gets a public URL
 
 ### Option B: Render
+
 1. Push to GitHub
 2. Go to [render.com](https://render.com) → New Web Service
 3. Connect your GitHub repo
@@ -108,6 +112,7 @@ cron.schedule('*/1 * * * *', async () => { ... }); // every minute for testing
 5. Add env variables
 
 ### Option C: GitHub Pages (frontend only)
+
 > Note: GitHub Pages is **static only** — the Node.js backend won't run.
 > Use Railway/Render for the full backend. Put the URL in `SITE_URL` in your `.env`.
 
@@ -115,18 +120,19 @@ cron.schedule('*/1 * * * *', async () => { ... }); // every minute for testing
 
 ## 🔌 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/subscribe` | Subscribe an email |
-| `POST` | `/api/contact` | Send contact form message |
-| `GET` | `/api/unsubscribe?email=...` | Unsubscribe an email |
-| `GET` | `/api/admin/subscribers` | View all subscribers (requires `x-admin-key` header) |
+| Method | Endpoint                     | Description                                          |
+| ------ | ---------------------------- | ---------------------------------------------------- |
+| `POST` | `/api/subscribe`             | Subscribe an email                                   |
+| `POST` | `/api/contact`               | Send contact form message                            |
+| `GET`  | `/api/unsubscribe?email=...` | Unsubscribe an email                                 |
+| `GET`  | `/api/admin/subscribers`     | View all subscribers (requires `x-admin-key` header) |
 
 ---
 
 ## 🛠️ Customising Your Content
 
 Open `public/index.html` and update:
+
 - **Hero section**: Name, title, description
 - **Projects**: Add/edit project cards
 - **Achievements**: Update timeline items
@@ -149,5 +155,5 @@ Open `server.js` and update `getNewsletterHTML()` to customise the monthly email
 ## 👨‍💻 Built By
 
 **Babalola John Praise (Peerace)**  
-EEE Student · Obafemi Awolowo University, Ile-Ife  
+CS Student · Obafemi Awolowo University, Ile-Ife  
 GitHub: [@Peerace](https://github.com/Peerace)

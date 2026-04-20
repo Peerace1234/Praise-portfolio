@@ -1,11 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cron = require('node-cron');
-const cors = require('cors');
-const rateLimit = require('express-rate-limit');
-const path = require('path');
-const fs = require('fs');
+require("dotenv").config();
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cron = require("node-cron");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,31 +13,31 @@ const PORT = process.env.PORT || 3000;
 // ── MIDDLEWARE ──
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 // ── RATE LIMITING ──
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10,
-  message: { message: 'Too many requests, please try again later.' }
+  message: { message: "Too many requests, please try again later." },
 });
-app.use('/api/', apiLimiter);
+app.use("/api/", apiLimiter);
 
 // ── SUBSCRIBERS STORE (JSON file-based persistence) ──
-const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
+const SUBSCRIBERS_FILE = path.join(__dirname, "data", "subscribers.json");
 
 function loadSubscribers() {
   try {
-    if (!fs.existsSync(path.join(__dirname, 'data'))) {
-      fs.mkdirSync(path.join(__dirname, 'data'));
+    if (!fs.existsSync(path.join(__dirname, "data"))) {
+      fs.mkdirSync(path.join(__dirname, "data"));
     }
     if (!fs.existsSync(SUBSCRIBERS_FILE)) {
       fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([]));
       return [];
     }
-    return JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, 'utf8'));
+    return JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, "utf8"));
   } catch (err) {
-    console.error('Error loading subscribers:', err);
+    console.error("Error loading subscribers:", err);
     return [];
   }
 }
@@ -46,18 +46,18 @@ function saveSubscribers(subscribers) {
   try {
     fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2));
   } catch (err) {
-    console.error('Error saving subscribers:', err);
+    console.error("Error saving subscribers:", err);
   }
 }
 
 // ── EMAIL TRANSPORTER ──
 function createTransporter() {
   return nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS  // Gmail App Password
-    }
+      pass: process.env.EMAIL_PASS, // Gmail App Password
+    },
   });
 }
 
@@ -178,7 +178,7 @@ function getWelcomeHTML(email) {
   <div class="header"><div class="logo">Peerace</div></div>
   <div class="body">
     <h2>Welcome to the Newsletter! 🎉</h2>
-    <p>Hey there! Thanks for subscribing. I'm <span class="highlight">Peerace</span> — an EEE student and full-stack developer at Obafemi Awolowo University, Nigeria.</p>
+    <p>Hey there! Thanks for subscribing. I'm <span class="highlight">Peerace</span> — a CS student and full-stack developer at Obafemi Awolowo University, Nigeria.</p>
     <p>Every month you'll get updates on my <strong style="color:#e8eaf0">engineering projects</strong>, <strong style="color:#e8eaf0">software builds</strong>, electronics experiments, and learning journey.</p>
     <p>First newsletter drops on the 1st of next month. Watch your inbox!</p>
     <a href="https://github.com/Peerace" class="cta">VIEW MY GITHUB →</a>
@@ -190,16 +190,20 @@ function getWelcomeHTML(email) {
 }
 
 // ── API: SUBSCRIBE ──
-app.post('/api/subscribe', async (req, res) => {
+app.post("/api/subscribe", async (req, res) => {
   const { email } = req.body;
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return res.status(400).json({ message: 'Please provide a valid email address.' });
+    return res
+      .status(400)
+      .json({ message: "Please provide a valid email address." });
   }
 
   const subscribers = loadSubscribers();
-  if (subscribers.find(s => s.email === email)) {
-    return res.status(409).json({ message: 'This email is already subscribed.' });
+  if (subscribers.find((s) => s.email === email)) {
+    return res
+      .status(409)
+      .json({ message: "This email is already subscribed." });
   }
 
   subscribers.push({ email, subscribedAt: new Date().toISOString() });
@@ -211,24 +215,26 @@ app.post('/api/subscribe', async (req, res) => {
     await transporter.sendMail({
       from: `"Peerace Newsletter" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: '🎉 Welcome to Peerace\'s Monthly Newsletter!',
-      html: getWelcomeHTML(email)
+      subject: "🎉 Welcome to Peerace's Monthly Newsletter!",
+      html: getWelcomeHTML(email),
     });
     console.log(`✅ Welcome email sent to: ${email}`);
   } catch (err) {
-    console.error('Welcome email error:', err.message);
+    console.error("Welcome email error:", err.message);
     // Still return success - subscriber is saved even if welcome email fails
   }
 
-  return res.status(200).json({ message: 'Successfully subscribed!' });
+  return res.status(200).json({ message: "Successfully subscribed!" });
 });
 
 // ── API: CONTACT FORM ──
-app.post('/api/contact', async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ message: 'Name, email, and message are required.' });
+    return res
+      .status(400)
+      .json({ message: "Name, email, and message are required." });
   }
 
   try {
@@ -237,76 +243,88 @@ app.post('/api/contact', async (req, res) => {
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: email,
-      subject: `📩 Portfolio Contact: ${subject || 'New message'} — from ${name}`,
+      subject: `📩 Portfolio Contact: ${subject || "New message"} — from ${name}`,
       html: `
         <div style="font-family:Georgia,serif;background:#0a0c0f;color:#e8eaf0;padding:40px;max-width:600px;margin:0 auto;">
           <h2 style="color:#00e5a0;margin-bottom:24px;">New Contact Message</h2>
           <p><strong>From:</strong> ${name} (${email})</p>
-          <p><strong>Subject:</strong> ${subject || 'No subject'}</p>
+          <p><strong>Subject:</strong> ${subject || "No subject"}</p>
           <hr style="border-color:#22282f;margin:24px 0;"/>
-          <p style="color:#a0aabb;line-height:1.8;">${message.replace(/\n/g, '<br>')}</p>
+          <p style="color:#a0aabb;line-height:1.8;">${message.replace(/\n/g, "<br>")}</p>
           <hr style="border-color:#22282f;margin:24px 0;"/>
           <p style="font-size:12px;color:#6b7588;">Sent via Portfolio Contact Form</p>
         </div>
-      `
+      `,
     });
-    return res.status(200).json({ message: 'Message sent!' });
+    return res.status(200).json({ message: "Message sent!" });
   } catch (err) {
-    console.error('Contact email error:', err.message);
-    return res.status(500).json({ message: 'Could not send message. Please try email directly.' });
+    console.error("Contact email error:", err.message);
+    return res
+      .status(500)
+      .json({ message: "Could not send message. Please try email directly." });
   }
 });
 
 // ── API: UNSUBSCRIBE ──
-app.get('/api/unsubscribe', (req, res) => {
+app.get("/api/unsubscribe", (req, res) => {
   const { email } = req.query;
-  if (!email) return res.status(400).send('Invalid unsubscribe link.');
+  if (!email) return res.status(400).send("Invalid unsubscribe link.");
 
   let subscribers = loadSubscribers();
   const initial = subscribers.length;
-  subscribers = subscribers.filter(s => s.email !== email);
+  subscribers = subscribers.filter((s) => s.email !== email);
 
   if (subscribers.length < initial) {
     saveSubscribers(subscribers);
-    res.send('<html><body style="font-family:Georgia;background:#0a0c0f;color:#e8eaf0;text-align:center;padding:80px"><h2 style="color:#00e5a0">Unsubscribed ✓</h2><p>You have been removed from the newsletter.</p></body></html>');
+    res.send(
+      '<html><body style="font-family:Georgia;background:#0a0c0f;color:#e8eaf0;text-align:center;padding:80px"><h2 style="color:#00e5a0">Unsubscribed ✓</h2><p>You have been removed from the newsletter.</p></body></html>',
+    );
   } else {
-    res.status(404).send('<html><body style="font-family:Georgia;background:#0a0c0f;color:#e8eaf0;text-align:center;padding:80px"><h2>Email not found</h2></body></html>');
+    res
+      .status(404)
+      .send(
+        '<html><body style="font-family:Georgia;background:#0a0c0f;color:#e8eaf0;text-align:center;padding:80px"><h2>Email not found</h2></body></html>',
+      );
   }
 });
 
 // ── MONTHLY NEWSLETTER CRON JOB ──
 // Runs on the 1st of every month at 9:00 AM
-cron.schedule('0 9 1 * *', async () => {
-  console.log('📬 Running monthly newsletter job...');
+cron.schedule("0 9 1 * *", async () => {
+  console.log("📬 Running monthly newsletter job...");
   const subscribers = loadSubscribers();
 
   if (subscribers.length === 0) {
-    console.log('No subscribers to email.');
+    console.log("No subscribers to email.");
     return;
   }
 
   const now = new Date();
-  const month = now.toLocaleString('default', { month: 'long' });
+  const month = now.toLocaleString("default", { month: "long" });
   const year = now.getFullYear();
 
   const transporter = createTransporter();
-  let sent = 0, failed = 0;
+  let sent = 0,
+    failed = 0;
 
   for (const subscriber of subscribers) {
     try {
-      const unsubLink = `${process.env.SITE_URL || 'http://localhost:' + PORT}/api/unsubscribe?email=${encodeURIComponent(subscriber.email)}`;
-      const html = getNewsletterHTML(month, year).replace('UNSUBSCRIBE_LINK', unsubLink);
+      const unsubLink = `${process.env.SITE_URL || "http://localhost:" + PORT}/api/unsubscribe?email=${encodeURIComponent(subscriber.email)}`;
+      const html = getNewsletterHTML(month, year).replace(
+        "UNSUBSCRIBE_LINK",
+        unsubLink,
+      );
 
       await transporter.sendMail({
         from: `"Peerace Monthly" <${process.env.EMAIL_USER}>`,
         to: subscriber.email,
         subject: `📬 Peerace Monthly Update — ${month} ${year}`,
-        html
+        html,
       });
       sent++;
       console.log(`  ✅ Sent to: ${subscriber.email}`);
       // Small delay between emails to avoid spam triggers
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise((r) => setTimeout(r, 500));
     } catch (err) {
       failed++;
       console.error(`  ❌ Failed for ${subscriber.email}: ${err.message}`);
@@ -317,18 +335,18 @@ cron.schedule('0 9 1 * *', async () => {
 });
 
 // ── ADMIN: SUBSCRIBER COUNT (optional) ──
-app.get('/api/admin/subscribers', (req, res) => {
-  const adminKey = req.headers['x-admin-key'];
+app.get("/api/admin/subscribers", (req, res) => {
+  const adminKey = req.headers["x-admin-key"];
   if (adminKey !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: "Unauthorized" });
   }
   const subscribers = loadSubscribers();
   res.json({ count: subscribers.length, subscribers });
 });
 
 // ── CATCH ALL: Serve index.html ──
-app.get('/{*path}', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("/{*path}", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // ── START SERVER ──
