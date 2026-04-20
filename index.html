@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peerace — CS Student & Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+  <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
+  <a href="#newsletter" onclick="closeMobileMenu()">Newsletter</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Peerace</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text reveal">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1>
+      Hi, I'm <span class="name">Peerace</span>
+      <span class="role">CS Student & Full-Stack Developer</span>
+    </h1>
+    <p class="hero-desc">
+      Computing science & Engineering student at OAU Ile-Ife. I build full-stack web applications, embedded systems, and IoT solutions — bridging hardware intelligence with modern software.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">🥇</div>
+        <div class="stat-label">African Maths<br>Gold Medal</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Full-Stack<br>Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">OAU</div>
+        <div class="stat-label">Obafemi Awolowo<br>University</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-photo reveal" style="transition-delay:.2s">
+    <div class="photo-frame">
+      <img src="peace.jpg" alt="Babalola John Praise — Peerace" />
+      <div class="photo-badge">
+        📍 Ile-Ife, Osun State, Nigeria
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">Building at the intersection of hardware &amp; software</h2>
+      <p>I'm <strong>Babalola John Praise</strong>, known as Peerace — a passionate Electrical & Electronic Engineering student at Obafemi Awolowo University, Ile-Ife.</p>
+      <p>My journey spans from designing <strong>BJT amplifier circuits</strong> and Arduino-based security systems to building production-ready Node.js backends with authentication, role-based access, and email systems.</p>
+      <p>I've received admissions to Marquette University and Jacksonville University, competed in Interswitch SPAK 4.0, and won a gold medal in an African mathematics competition.</p>
+      <p>Currently deep in <strong>full-stack development</strong> — building the Vickayor Private Schools management system and expanding my backend expertise with Node.js.</p>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="section-label">Tech Stack</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="dot"></span>HTML / CSS</div>
+        <div class="skill-chip"><span class="dot"></span>JavaScript</div>
+        <div class="skill-chip"><span class="dot"></span>Node.js</div>
+        <div class="skill-chip"><span class="dot"></span>Express.js</div>
+        <div class="skill-chip"><span class="dot"></span>Python</div>
+        <div class="skill-chip"><span class="dot"></span>Arduino / C</div>
+        <div class="skill-chip"><span class="dot"></span>LTspice</div>
+        <div class="skill-chip"><span class="dot"></span>React Native</div>
+        <div class="skill-chip"><span class="dot"></span>Git / GitHub</div>
+        <div class="skill-chip"><span class="dot"></span>REST APIs</div>
+        <div class="skill-chip"><span class="dot"></span>Nodemailer</div>
+        <div class="skill-chip"><span class="dot"></span>EEE 302/402</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding: 100px 48px;">
+  <div class="section-label reveal">What I've Built</div>
+  <h2 class="section-title reveal">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01 —</div>
+      <h3>Vickayor School Management System</h3>
+      <p>Full-stack backend with admin panel, role-based access control, PBKDF2 password hashing, session management, rate limiting, and Nodemailer email integration for Nigeria's Vickayor Private Schools.</p>
+      <div class="project-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">Nodemailer</span>
+        <span class="tag">Sessions</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:.1s">
+      <div class="project-num">02 —</div>
+      <h3>Arduino Adaptive Security System</h3>
+      <p>Microcontroller-based adaptive hostel security system with sensor fusion, dynamic alerting, and a full engineering flowchart. Built with Arduino and custom .ino firmware for OAU hostels.</p>
+      <div class="project-tags">
+        <span class="tag">Arduino</span>
+        <span class="tag">C/C++</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Embedded</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:.2s">
+      <div class="project-num">03 —</div>
+      <h3>BJT Amplifier Lab — LTspice</h3>
+      <p>Common Emitter Amplifier designed, simulated, and analysed in LTspice with full AC/DC analysis, Bode plots, load line analysis, and a comprehensive lab report.</p>
+      <div class="project-tags">
+        <span class="tag">LTspice</span>
+        <span class="tag">Electronics</span>
+        <span class="tag">BJT</span>
+        <span class="tag">EEE 302</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:.3s">
+      <div class="project-num">04 —</div>
+      <h3>SmartPSI Pro — TPMS Solution</h3>
+      <p>Tire Pressure Monitoring System startup concept with full circuit case studies, marketing content strategy, and technical product documentation developed as part of a 100-day startup course.</p>
+      <div class="project-tags">
+        <span class="tag">TPMS</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Startup</span>
+        <span class="tag">Circuits</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:.4s">
+      <div class="project-num">05 —</div>
+      <h3>Personal Portfolio Website</h3>
+      <p>This very website — a responsive full-stack portfolio with Node.js backend, monthly newsletter system, contact form, and subscriber management. Deployed on GitHub.</p>
+      <div class="project-tags">
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Cron Jobs</span>
+        <span class="tag">Full-Stack</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal" style="transition-delay:.5s">
+      <div class="project-num">06 —</div>
+      <h3>Twitter Clone — React Native</h3>
+      <p>Mobile Twitter clone built with React Native covering backend setup and mobile app architecture, as part of a structured full-stack mobile development learning journey.</p>
+      <div class="project-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">Node.js</span>
+      </div>
+      <a href="https://github.com/Peerace" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="achievements-inner">
+    <div class="section-label reveal">Milestones</div>
+    <h2 class="section-title reveal">Achievements</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot">🥇</div>
+        <div class="tl-body">
+          <div class="tl-title">African Mathematics Competition — Gold Medal</div>
+          <div class="tl-sub">Academic Achievement</div>
+          <p class="tl-desc">Won gold medal in an African-level mathematics competition, demonstrating exceptional analytical and quantitative reasoning skills.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal" style="transition-delay:.1s">
+        <div class="tl-dot">📊</div>
+        <div class="tl-body">
+          <div class="tl-title">Competitive JAMB Score</div>
+          <div class="tl-sub">University Entrance · Nigeria</div>
+          <p class="tl-desc">Achieved a highly competitive JAMB score securing admission to OAU — one of Nigeria's most prestigious universities for Engineering.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal" style="transition-delay:.15s">
+        <div class="tl-dot">🏦</div>
+        <div class="tl-body">
+          <div class="tl-title">Interswitch SPAK 4.0 Competitor</div>
+          <div class="tl-sub">National STEM Competition</div>
+          <p class="tl-desc">Participated in one of Nigeria's top STEM competitions for students, competing against peers across the country in science and technology.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal" style="transition-delay:.2s">
+        <div class="tl-dot">🎓</div>
+        <div class="tl-body">
+          <div class="tl-title">International University Admissions</div>
+          <div class="tl-sub">Marquette University &amp; Jacksonville University</div>
+          <p class="tl-desc">Received admissions from two US universities while pursuing international scholarship opportunities including Türkiye Bursları-equivalent programs.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal" style="transition-delay:.25s">
+        <div class="tl-dot">💻</div>
+        <div class="tl-body">
+          <div class="tl-title">Full-Stack Developer — Vickayor Schools</div>
+          <div class="tl-sub">Industry Project · Ile-Ife</div>
+          <p class="tl-desc">Contracted to design and build the complete backend management system for Vickayor Comprehensive College — from authentication to admin panel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-icon">📬</div>
+    <div class="section-label">Stay Updated</div>
+    <h2 class="section-title">Monthly Newsletter</h2>
+    <p class="newsletter-desc">
+      Get monthly updates on my projects, electronics experiments, software builds, and engineering learnings — delivered straight to your inbox every month.
+    </p>
+    <form class="subscribe-form" id="subscribe-form" onsubmit="subscribe(event)">
+      <input type="email" id="sub-email" placeholder="your@email.com" required />
+      <button type="submit" id="sub-btn">Subscribe</button>
+    </form>
+    <div id="subscribe-msg"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 100px 48px;">
+  <div class="contact-grid" style="max-width:900px; margin:0 auto;">
+    <div class="contact-info reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p>Open to internship opportunities, freelance projects, collaboration on electronics/software work, and scholarship connections. Based in Ile-Ife, Nigeria — available remotely.</p>
+      <div class="contact-links">
+        <a href="mailto:peerace@email.com" class="contact-link">
+          <span class="icon">✉️</span> peerace@email.com
+        </a>
+        <a href="https://github.com/Peerace" target="_blank" class="contact-link">
+          <span class="icon">🐙</span> github.com/Peerace
+        </a>
+        <a href="https://linkedin.com/in/peerace" target="_blank" class="contact-link">
+          <span class="icon">💼</span> linkedin.com/in/peerace
+        </a>
+        <a href="#" class="contact-link">
+          <span class="icon">📍</span> Ile-Ife, Osun State, Nigeria
+        </a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <form class="contact-form" id="contact-form" onsubmit="sendMessage(event)">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" placeholder="Your message..." required></textarea>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Message →</button>
+      </form>
+      <div id="contact-msg" style="margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:13px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Peerace</div>
+  <div class="footer-text">© 2025 Babalola John Praise · Built with Node.js</div>
+  <div class="footer-links">
+    <a href="https://github.com/Peerace" target="_blank">GitHub</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── MOBILE MENU ──
+  function openMobileMenu() { document.getElementById('mobile-menu').classList.add('open'); }
+  function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+
+  // ── SUBSCRIBE ──
+  async function subscribe(e) {
+    e.preventDefault();
+    const email = document.getElementById('sub-email').value;
+    const btn = document.getElementById('sub-btn');
+    const msg = document.getElementById('subscribe-msg');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        msg.innerHTML = '<span class="msg-success">✓ Subscribed! Welcome to the newsletter.</span>';
+        document.getElementById('subscribe-form').reset();
+      } else {
+        msg.innerHTML = `<span class="msg-error">✗ ${data.message || 'Something went wrong.'}</span>`;
+      }
+    } catch {
+      msg.innerHTML = '<span class="msg-error">✗ Network error. Please try again.</span>';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    }
+  }
+
+  // ── CONTACT FORM ──
+  async function sendMessage(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('contact-msg');
+    const btn = form.querySelector('button');
+    const data = Object.fromEntries(new FormData(form));
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      if (res.ok) {
+        msg.innerHTML = '<span style="color:var(--accent)">✓ Message sent! I\'ll reply shortly.</span>';
+        form.reset();
+      } else {
+        msg.innerHTML = `<span style="color:#ff6b6b">✗ ${result.message || 'Error sending message.'}</span>`;
+      }
+    } catch {
+      msg.innerHTML = '<span style="color:#ff6b6b">✗ Network error. Please try again.</span>';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Message →';
+    }
+  }
+</script>
+</body>
+</html>
