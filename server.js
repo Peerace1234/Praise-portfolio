@@ -345,7 +345,7 @@ app.get("/api/admin/subscribers", (req, res) => {
 });
 
 // ── CATCH ALL: Serve index.html ──
-app.get("/{*path}", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
