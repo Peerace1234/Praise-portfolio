@@ -8,7 +8,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // ── MIDDLEWARE ──
 app.use(cors());
@@ -345,7 +345,7 @@ app.get("/api/admin/subscribers", (req, res) => {
 });
 
 // ── CATCH ALL: Serve index.html ──
-app.get("/{*path}", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
