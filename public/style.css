@@ -775,16 +775,16 @@ footer {
   color: var(--accent);
 }
 .mobile-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
+  position: fixed;
+  top: 18px;
+  right: 24px;
   background: none;
   border: none;
   color: var(--ink);
   font-size: 36px;
   cursor: pointer;
   pointer-events: auto;
-  z-index: 1000;
+  z-index: 1001;
   transition: color 0.2s;
   padding: 10px;
 }
