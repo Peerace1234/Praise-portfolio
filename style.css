@@ -746,8 +746,8 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg);
-  z-index: 800;
+  background: rgba(10, 12, 15, 0.95);
+  z-index: 999;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -755,6 +755,13 @@ footer {
 }
 .mobile-menu.open {
   display: flex;
+}
+.mobile-menu-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 .mobile-menu a {
   font-family: "Syne", sans-serif;
@@ -769,13 +776,20 @@ footer {
 }
 .mobile-close {
   position: absolute;
-  top: 20px;
-  right: 24px;
+  top: -40px;
+  right: 0;
   background: none;
   border: none;
   color: var(--ink);
-  font-size: 28px;
+  font-size: 36px;
   cursor: pointer;
+  pointer-events: auto;
+  z-index: 1000;
+  transition: color 0.2s;
+  padding: 10px;
+}
+.mobile-close:hover {
+  color: var(--accent);
 }
 
 /* ── RESPONSIVE ── */

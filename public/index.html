@@ -12,13 +12,15 @@
 <body>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
-  <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#projects" onclick="closeMobileMenu()">Projects</a>
-  <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
-  <a href="#newsletter" onclick="closeMobileMenu()">Newsletter</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenuOnOverlay(event)">
+  <div class="mobile-menu-content">
+    <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
+    <a href="#newsletter" onclick="closeMobileMenu()">Newsletter</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -311,6 +313,9 @@
   // ── MOBILE MENU ──
   function openMobileMenu() { document.getElementById('mobile-menu').classList.add('open'); }
   function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+  function closeMobileMenuOnOverlay(e) { 
+    if (e.target.id === 'mobile-menu') closeMobileMenu(); 
+  }
 
   // ── SUBSCRIBE ──
   async function subscribe(e) {
