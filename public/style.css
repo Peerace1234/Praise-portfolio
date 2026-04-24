@@ -776,6 +776,8 @@ footer {
   color: var(--ink);
   font-size: 28px;
   cursor: pointer;
+  pointer-events: auto;
+  z-index: 1000;
 }
 
 /* ── RESPONSIVE ── */
