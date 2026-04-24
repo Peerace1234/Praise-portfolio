@@ -311,8 +311,16 @@
   reveals.forEach(el => observer.observe(el));
 
   // ── MOBILE MENU ──
-  function openMobileMenu() { document.getElementById('mobile-menu').classList.add('open'); }
-  function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+  function openMobileMenu() { 
+    document.getElementById('mobile-menu').classList.add('open');
+    document.querySelector('.hamburger').style.display = 'none';
+    document.querySelector('.mobile-close').style.display = 'block';
+  }
+  function closeMobileMenu() { 
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.querySelector('.hamburger').style.display = 'flex';
+    document.querySelector('.mobile-close').style.display = 'none';
+  }
   function closeMobileMenuOnOverlay(e) { 
     if (e.target.id === 'mobile-menu') closeMobileMenu(); 
   }

@@ -787,6 +787,7 @@ footer {
   z-index: 1001;
   transition: color 0.2s;
   padding: 10px;
+  display: none;
 }
 .mobile-close:hover {
   color: var(--accent);
